@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{% for item in posts %}
+Подписки :: {{ block.super }}
+{% endfor %}
+{% endblock %}
+
+
+{% block content_dop %}
+<div class="col-md-2">
+    <h3 class="border-left"> Мои подписки </h3>
+    <div class="list-group">
+        {% for subs in subscriptions %}
+        <a href="{% url 'author_name' subs %}" class="list-group-item list-group-item-action">{{subs.user_to}}</a>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+
+{% for posts in posts_list %}
+{% for item in posts %}
+<div class="card mb-3">
+    <div class="card-header">
+      Автор: <a href="{% url 'author_name' item.author.username %}">{{item.author}}</a>
+    </div>
+    <div class="card-body">
+        <div class="media">
+            <div class="media-body">
+                <h5 class="card-title">{{item.title}}</h5>
+                <p class="card-text">{{item.content|linebreaks|truncatewords:150}}</p>
+                <a href="{% url 'view_post' item.pk %}" class="btn btn-primary">Read more...</a>
+
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-muted">
+        {{item.date_created|date:"Y-m-d H:i"}}
+    </div>
+</div>
+{% endfor %}
+{% endfor %}
+{% endblock %}

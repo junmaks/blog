@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{news_item.title}} :: {{ block.super }}
+{% endblock %}
+
+
+{% block content %}
+<div class="card mb-3">
+      <div class="card-header">
+      Автор: <a href="{% url 'author_name' post_item.author.username %}">{{post_item.author}}</a>
+    </div>
+    <div class="card-body">
+      <div class="media">
+        <div class="media-body">
+          <h5 class="card-title">{{post_item.title}}</h5>
+          <p class="card-text">{{post_item.content|linebreaks}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer text-muted">
+      {{post_item.date_created|date:"Y-m-d H:i"}}
+    </div>
+  </div>
+{% endblock %}
