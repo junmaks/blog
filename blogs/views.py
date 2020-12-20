@@ -77,17 +77,13 @@ def view_post(request, post_id):
 def get_subscriptions(request, username):
     users = User.objects.all()
     user_name = User.objects.get(username=username)
-    # posts = Blogs.objects.filter(author_id=int(user_name.pk))
     subscriptions = Subscribers.objects.filter(user_from=user_name.pk)
-    subscriptionss = subscriptions.values_list('user_to', flat=True)
-    print(subscriptionss)
-    posts_list = []
-    for post in subscriptionss:
-        posts = Blogs.objects.filter(author_id=int(post))
-        posts_list.append(posts)
-        print(post)
+    subscriptions_id = subscriptions.values_list('user_to', flat=True)
+    posts = Blogs.objects.filter(author_id__in=subscriptions_id)
+    print(posts)
     context = {
-        'posts_list': posts_list,
+        'posts': posts,
+        'users': users,
         'user_name': user_name,
         'subscriptions': subscriptions,
     }
