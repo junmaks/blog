@@ -115,6 +115,15 @@ USE_L10N = True
 USE_TZ = True
 
 
+EMAIL_HOST = 'smtp.mail.ru'
+EMAIL_PORT = 'port'
+EMAIL_HOST_USER = "your_email"
+EMAIL_HOST_PASSWORD = "your_password"
+EMAIL_USE_TLS = True
+
+SERVER_EMAIL = EMAIL_HOST_USER
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
@@ -126,3 +135,5 @@ STATICFILES_DIRS = [
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = 'media/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
