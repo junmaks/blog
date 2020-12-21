@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
 
+
 # Create your models here.
 
 class Blogs(models.Model):
@@ -23,14 +24,9 @@ class Blogs(models.Model):
 
 
 class Subscribers(models.Model):
-    user_from = models.ForeignKey(User, related_name='user_to', on_delete=models.CASCADE,)
-    user_to = models.ForeignKey(User, related_name='user_from', on_delete=models.CASCADE,)
+    user_from = models.ForeignKey(User, related_name='user_to', on_delete=models.CASCADE, )
+    user_to = models.ForeignKey(User, related_name='user_from', on_delete=models.CASCADE, )
 
 
-
-User.add_to_class('following', models.ManyToManyField('self', through=Subscribers, related_name='followers', symmetrical=False))
-
-
-#
-# class Subscriber(models.Model):
-#     user = models.ForeignKey('auth.User', on_delete=models.CASCADE, )
+# User.add_to_class('following',
+#                   models.ManyToManyField('self', through=Subscribers, related_name='followers', symmetrical=False))
