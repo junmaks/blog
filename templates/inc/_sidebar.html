@@ -2,7 +2,7 @@
     <h1 class="border-left"> Пользователи </h1>
     <div class="list-group">
         {% for user in users %}
-        <a href="{% url 'author_name' user.username %}" class="list-group-item list-group-item-action">{{user.username}}</a>
+        <a href="{% url 'get_users' user.username request.user.pk %}" class="list-group-item list-group-item-action">{{user.username}}</a>
         {% endfor %}
     </div>
 </div>
