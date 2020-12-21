@@ -13,11 +13,16 @@
 
 
 {% block content %}
-    {% if request.user.is_authenticated %}
-    <form class="button mb-3" action="{% url 'new_post' request.user %}">
+    {% if request.user.is_authenticated and subscription == 0 and request.user != user_id %}
+    <form class="button mb-3" action="{% url 'add_subscribe' user_id.pk request.user.pk %}">
       <button>Подписаться</button>
     </form>
+    {% elif request.user.is_authenticated and subscription == 1 and request.user != user_id %}
+    <form class="button mb-3" action="{% url 'remove_subscribe' user_id.pk request.user.pk %}">
+      <button>Отписаться</button>
+    </form>
     {% endif %}
+
 {% for item in posts %}
 
 <div class="card mb-3">

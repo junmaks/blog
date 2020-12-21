@@ -4,11 +4,14 @@
 {{news_item.title}} :: {{ block.super }}
 {% endblock %}
 
+{% block sidebar %}
+{% include 'inc/_sidebar.html' %}
+{% endblock %}
 
 {% block content %}
 <div class="card mb-3">
       <div class="card-header">
-      Автор: <a href="{% url 'author_name' post_item.author.username %}">{{post_item.author}}</a>
+      Автор: <a href="{% url 'get_users' post_item.author.username request.user.pk %}">{{post_item.author}}</a>
     </div>
     <div class="card-body">
       <div class="media">

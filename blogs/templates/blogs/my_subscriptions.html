@@ -12,7 +12,7 @@
     <h3 class="border-left"> Мои подписки </h3>
     <div class="list-group">
         {% for subs in subscriptions %}
-        <a href="{% url 'author_name' subs %}" class="list-group-item list-group-item-action">{{subs.user_to}}</a>
+        <a href="{% url 'get_users' subs.user_to request.user.pk %}" class="list-group-item list-group-item-action">{{subs.user_to}}</a>
         {% endfor %}
     </div>
 </div>
@@ -23,7 +23,7 @@
 {% for item in posts %}
 <div class="card mb-3">
     <div class="card-header">
-      Автор: <a href="{% url 'author_name' item.author %}">{{item.author}}</a>
+      Автор: <a href="{% url 'get_users' item.author.username request.user.pk %}">{{item.author}}</a>
     </div>
     <div class="card-body">
         <div class="media">

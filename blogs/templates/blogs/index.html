@@ -16,7 +16,7 @@
 
 <div class="card mb-3">
     <div class="card-header">
-      Автор: <a href="{% url 'author_name' item.author.username %}">{{item.author}}</a>
+      Автор: <a href="{% url 'get_users' item.author.username request.user.pk%}">{{item.author}}</a>
     </div>
   <div class="card-body">
     <div class="media">

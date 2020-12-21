@@ -6,13 +6,12 @@
 {% endfor %}
 {% endblock %}
 
-
 {% block content_dop %}
 <div class="col-md-2">
     <h3 class="border-left"> Мои подписчики </h3>
     <div class="list-group">
         {% for follow in followers %}
-        <a href="{% url 'author_name' follow %}" class="list-group-item list-group-item-action">{{follow.user_from}}</a>
+        <a href="{% url 'get_users' follow.user_from request.user.pk%}" class="list-group-item list-group-item-action">{{follow.user_from}}</a>
         {% endfor %}
     </div>
 </div>
