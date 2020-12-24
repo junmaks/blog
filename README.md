@@ -1,6 +1,7 @@
 # blog
 
 Инструкция
+
 Необходимо установить виртуальное окружение (python -m venv venv)
 Активировать его (Windows: .\venv\Scripts\activate, Linux: source venv/Scripts/activate)
 Необходимые библиотеки:
